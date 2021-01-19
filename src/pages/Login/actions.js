@@ -5,6 +5,6 @@ export const login = ({ username, password }) => {
   return axios
     .post(ROUTES.LOGIN, { username, password })
     .then((response) => response.headers)
-    .then((headers) => ({ token: headers.Authorization }))
+    .then((headers) => ({ token: headers.authorization }))
     .catch((error) => ({ errorMsg: error.toJSON().message }));
 };
