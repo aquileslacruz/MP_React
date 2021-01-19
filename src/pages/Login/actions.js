@@ -1,6 +1,10 @@
+import axios from "axios";
+import { ROUTES } from "../../constants";
+
 export const login = ({ username, password }) => {
-    return {
-        token: 'Bearer 34244342234', 
-        errorMsg: null
-    };
-}
+  return axios
+    .post(ROUTES.LOGIN, { username, password })
+    .then((response) => response.headers)
+    .then((headers) => ({ token: headers.Authorization }))
+    .catch((error) => ({ errorMsg: error.toJSON().message }));
+};

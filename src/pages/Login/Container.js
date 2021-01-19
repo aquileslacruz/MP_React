@@ -14,8 +14,8 @@ const Container = ({ setToken, showError }) => {
     const onUsernameChange = e => setUsername(e.target.value);
     const onPasswordChange = e => setPassword(e.target.value);
 
-    const onSubmit = () => {
-        const { token, errorMsg } = login({ username, password });
+    const onSubmit = async () => {
+        const { token, errorMsg } = await login({ username, password });
         if (token) {
             setToken(token);
             history.push('/');

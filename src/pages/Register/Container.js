@@ -17,14 +17,14 @@ const Container = ({ showSuccess, showError }) => {
     const onPasswordChange = (e) => setPassword(e.target.value);
     const onValidationChange = (e) => setValidation(e.target.value);
 
-    const onSubmit = () => {
+    const onSubmit = async () => {
         if (validation !== password) {
             showError('The passwords do no match');
             setError(true);
             return;
         }
 
-        const { errorMsg } = register({ username, password });
+        const { errorMsg } = await register({ username, password });
 
         if (errorMsg) { 
             showError(errorMsg);
